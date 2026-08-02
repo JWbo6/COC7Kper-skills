@@ -6,8 +6,6 @@
 
 ## 快速安装
 
-安装后重启 Codex/ZCode，使新 Skill 重新发现。
-
 ### Linux / macOS
 
 直接安装全部 Skill：
