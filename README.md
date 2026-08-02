@@ -10,7 +10,13 @@
 
 ### Linux / macOS
 
-审阅脚本后执行：
+直接安装全部 Skill：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/JWbo6/COC7Kper-skills/main/install.sh | bash
+```
+
+审阅后再安装：
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/JWbo6/COC7Kper-skills/main/install.sh -o /tmp/coc7kper-install.sh
@@ -18,9 +24,11 @@ less /tmp/coc7kper-install.sh
 bash /tmp/coc7kper-install.sh
 ```
 
-也可以只安装指定 Skill：
+只安装指定 Skill：
 
 ```bash
+curl -fsSL https://raw.githubusercontent.com/JWbo6/COC7Kper-skills/main/install.sh -o /tmp/coc7kper-install.sh
+less /tmp/coc7kper-install.sh
 bash /tmp/coc7kper-install.sh coc-dice coc-kp
 ```
 
@@ -45,6 +53,9 @@ Get-Content "$env:TEMP\coc7kper-install.ps1"
 只安装指定 Skill：
 
 ```powershell
+Invoke-WebRequest `
+  -Uri "https://raw.githubusercontent.com/JWbo6/COC7Kper-skills/main/install.ps1" `
+  -OutFile "$env:TEMP\coc7kper-install.ps1"
 & "$env:TEMP\coc7kper-install.ps1" -Skills coc-dice,coc-kp
 ```
 
