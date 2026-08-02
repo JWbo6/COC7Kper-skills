@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+ARCHIVE_URL="${COC7KPER_ARCHIVE_URL:-https://github.com/JWbo6/COC7Kper-skills/archive/refs/heads/main.tar.gz}"
 DEFAULT_DEST="${CODEX_HOME:-$HOME/.codex}/skills"
 DESTINATION="$DEFAULT_DEST"
 FORCE=0
 REQUESTED=()
+BOOTSTRAP_DIR=""
 
 usage() {
   cat <<'EOF'
@@ -51,11 +53,30 @@ while (($#)); do
   esac
 done
 
+cleanup() {
+  if [[ -n "$BOOTSTRAP_DIR" && -d "$BOOTSTRAP_DIR" ]]; then
+    rm -rf -- "$BOOTSTRAP_DIR"
+  fi
+}
+trap cleanup EXIT
+
 SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_DIR="$SCRIPT_DIR/skills"
-[[ -d "$SOURCE_DIR" ]] || { printf '%s\n' "error: skills directory not found: $SOURCE_DIR" >&2; exit 1; }
+if [[ ! -d "$SOURCE_DIR" ]]; then
+  command -v curl >/dev/null 2>&1 || { printf '%s\n' 'error: curl is required when installing from a downloaded script' >&2; exit 1; }
+  command -v tar >/dev/null 2>&1 || { printf '%s\n' 'error: tar is required when installing from a downloaded script' >&2; exit 1; }
+  BOOTSTRAP_DIR="$(mktemp -d)"
+  curl -fsSL "$ARCHIVE_URL" | tar -xz -C "$BOOTSTRAP_DIR"
+  SOURCE_DIR="$(find "$BOOTSTRAP_DIR" -mindepth 2 -maxdepth 2 -type d -name skills -print | head -n 1)"
+  [[ -n "$SOURCE_DIR" && -d "$SOURCE_DIR" ]] || { printf '%s\n' 'error: downloaded archive has no skills directory' >&2; exit 1; }
+fi
 
-mapfile -t AVAILABLE < <(find "$SOURCE_DIR" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)
+AVAILABLE=()
+for path in "$SOURCE_DIR"/*; do
+  [[ -d "$path" ]] && AVAILABLE+=("${path##*/}")
+done
+((${#AVAILABLE[@]} > 0)) || { printf '%s\n' "error: no skills found: $SOURCE_DIR" >&2; exit 1; }
+
 if ((${#REQUESTED[@]} == 0)); then
   REQUESTED=("${AVAILABLE[@]}")
 fi
