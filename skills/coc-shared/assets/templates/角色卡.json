@@ -1,0 +1,20 @@
+{
+  "id": "character_01H00000000000000000000000",
+  "record_type": "character",
+  "schema_version": "1.0.0",
+  "campaign_id": "",
+  "name": "",
+  "player": "",
+  "type": "player_character",
+  "occupation": "",
+  "era": "",
+  "age": null,
+  "stats": {"STR": null, "CON": null, "SIZ": null, "DEX": null, "APP": null, "INT": null, "POW": null, "EDU": null, "LUCK": null},
+  "derived": {"hp": {"current": null, "max": null}, "san": {"current": null, "max": null}, "mp": {"current": null, "max": null}, "move": null, "build": null, "damage_bonus": null},
+  "skills": {},
+  "inventory": [],
+  "status": "draft",
+  "created_at": null,
+  "updated_at": null,
+  "revision": 1
+}

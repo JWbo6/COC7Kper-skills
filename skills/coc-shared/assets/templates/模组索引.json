@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "campaign_id": "",
+  "sources": [
+    {
+      "source_id": "source_01H00000000000000000000000",
+      "path": "",
+      "absolute_path": "",
+      "original_absolute_path": "",
+      "campaign_copy_path": "01-模组资料/原始模组/",
+      "copy_status": "pending",
+      "format": "",
+      "size_bytes": 0,
+      "modified_at": null,
+      "sha256": "",
+      "parse_status": "pending",
+      "parse_method": "",
+      "parse_time": null
+    }
+  ],
+  "public_summary": "",
+  "kp_notes_path": "主持人资料/",
+  "updated_at": null,
+  "revision": 1
+}

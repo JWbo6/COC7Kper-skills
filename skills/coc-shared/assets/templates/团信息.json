@@ -1,0 +1,17 @@
+{
+  "id": "campaign_01H00000000000000000000000",
+  "record_type": "campaign",
+  "schema_version": "1.0.0",
+  "campaign_id": "campaign_01H00000000000000000000000",
+  "name": "",
+  "path_name": "",
+  "rule_system": "Call of Cthulhu 7e",
+  "status": "draft",
+  "kp": "",
+  "players": [],
+  "module_sources": [],
+  "current_session_id": null,
+  "created_at": null,
+  "updated_at": null,
+  "revision": 1
+}

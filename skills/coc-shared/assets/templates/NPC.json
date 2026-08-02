@@ -1,0 +1,17 @@
+{
+  "id": "npc_01H00000000000000000000000",
+  "record_type": "npc",
+  "schema_version": "1.0.0",
+  "campaign_id": "",
+  "name": "",
+  "aliases": [],
+  "public_profile": "",
+  "kp_truth": "",
+  "goals": [],
+  "knowledge_boundary": [],
+  "visibility": "split",
+  "status": "active",
+  "first_seen_session_id": null,
+  "last_seen_session_id": null,
+  "revision": 1
+}
